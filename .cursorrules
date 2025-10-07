@@ -1,0 +1,54 @@
+# Repository Workflow: Gitflow
+
+This repository uses Gitflow for branching and release management.
+
+Branches
+- main: Production-ready code. Only merge from release/* and hotfix/*.
+- develop: Integration branch for the next release. Default branch for day-to-day work.
+- feature/*: Topic branches created from develop for new work.
+- release/*: Stabilization branches created from develop when preparing a release.
+- hotfix/*: Emergency fixes created from main, merged back to main and develop.
+
+Feature Workflow
+1. Branch from develop using feature/<short-kebab-summary>.
+2. Commit work frequently; prefer Conventional Commits (e.g., feat:, fix:, chore:, docs:, refactor:, test:, perf:).
+3. Open a PR into develop. Request review; ensure CI passes.
+4. Squash or rebase-merge per repository settings.
+
+Release Workflow
+1. Create release/<version> from develop.
+2. Only allow bug fixes, docs, and release metadata (CHANGELOG, version bumps).
+3. Merge release/* into main and tag main with v<version>.
+4. Merge release/* back into develop to keep it updated.
+
+Hotfix Workflow
+1. Create hotfix/<short-kebab-summary> from main.
+2. Implement the fix, bump patch version if applicable.
+3. Merge hotfix/* into main and tag main with the new version.
+4. Merge hotfix/* back into develop.
+
+Pull Request Guidelines
+- Title: <type>: <short imperative summary>
+- Description: What changed, why, tests/verification.
+- Link issues with "Closes #<id>" when applicable.
+- Require at least one review and green checks.
+
+Commit Message Guidelines (Conventional Commits)
+- feat: a new feature
+- fix: a bug fix
+- chore/docs/refactor/test/perf/build/ci: as applicable
+- Use present tense, imperative mood. Keep first line <= 72 chars.
+
+Versioning & Tags
+- Use semantic versioning (MAJOR.MINOR.PATCH).
+- Tag releases on main as v<version> (e.g., v1.2.3).
+
+Naming Conventions
+- feature/<kebab-case-topic>
+- release/<version>
+- hotfix/<kebab-case-topic>
+
+Notes for Cursor
+- Default work happens against develop.
+- Prefer small, focused PRs from feature/* into develop.
+- Keep this file updated if process changes.
