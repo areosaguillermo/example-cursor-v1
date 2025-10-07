@@ -1,9 +1,10 @@
 {
-  "hosting": {
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+  "apphosting": {
+    "predeploy": [],
+    "backends": [
+      {
+        "id": "api"
+      }
     ]
   }
 }
